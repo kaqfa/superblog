@@ -13,4 +13,33 @@
             Share post ini
         </a>
     </p>
+    <hr>
+    {% with comments.count as total_comments %}
+        <h2>
+            {{ total_comments }} komentar
+        </h2>
+    {% endwith %}
+    {% for comment in comments %}
+        <div class="comment">
+            <p class="info">
+                Comment {{ forloop.counter }} 
+                by {{ comment.name }}
+                {{ comment.created }}
+            </p>
+            {{ comment.body|linebreaks }}
+        </div>
+    {% empty %}
+        <p>Belum ada komentar</p>
+    {% endfor %}
+    <hr>
+    {% if new_comment %}
+        <h2>Komentar anda telah ditambahkan</h2>
+    {% else %}
+        <h2>Tambah Komentar</h2>
+        <form action="." method="post">
+            {{ comment_form.as_p }}
+            {% csrf_token %}
+            <p><input type="submit" value="Tambah Komentar"></p>            
+        </form>
+    {% endif %}
 {% endblock %}
