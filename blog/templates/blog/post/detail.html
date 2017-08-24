@@ -8,4 +8,9 @@
         Diterbitkan pada: {{ post.publish }} oleh {{ post.author }}
     </p>
     {{ post.body|linebreaks }}
+    <p>
+        <a href="{% url 'blog:post_share' post.id %}">
+            Share post ini
+        </a>
+    </p>
 {% endblock %}
