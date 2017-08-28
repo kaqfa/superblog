@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Login In - Account{% endblock %}
+
+{% block content %}
+    <h1>Login</h1>
+    {% if form.errors %}
+        <p>
+            username & password tidak sama, silahkan dicoba lagi
+        </p>
+    {% else %}
+        <p>Gunakan form di bawah ini untuk login ke aplikasi</p>
+    {% endif %}
+    <form action="." method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit"></p>
+    </form>
+    <p><a href="{% url 'password_reset' %}">Lupa password anda?</a></p>
+{% endblock %}
