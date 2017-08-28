@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Login In - Account{% endblock %}
+
+{% block content %}
+    <h1>Login</h1>
+    <p>Gunakan form di bawah ini untuk login ke aplikasi</p>
+    <form action="." method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit"></p>
+    </form>
+{% endblock %}
